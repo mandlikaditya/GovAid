@@ -1,0 +1,28 @@
+---
+const categories = [
+  { title: "Housing", icon: "🏠", desc: "Rent assistance, mortgage relief, and housing vouchers." },
+  { title: "Food", icon: "🍎", desc: "SNAP, WIC, and local food bank programs." },
+  { title: "Healthcare", icon: "🏥", desc: "Medicaid, marketplace subsidies, and prescription aid." },
+  { title: "Childcare", icon: "🧸", desc: "Childcare tax credits and preschool subsidies." },
+  { title: "Education", icon: "🎓", desc: "Pell grants, student loan relief, and vocational training." },
+  { title: "Utilities", icon: "⚡", desc: "Energy assistance (LIHEAP) and broadband discounts." }
+];
+---
+<section class="py-24 bg-white dark:bg-slate-950">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Aid by Category</h2>
+      <p class="mt-4 text-lg text-slate-500 dark:text-slate-400">Select a category to explore specific programs available today.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map((cat, i) => (
+        <div class={`reveal reveal-delay-${i % 3} p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 group hover:-translate-y-1`}>
+          <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">{cat.icon}</div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">{cat.title}</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{cat.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

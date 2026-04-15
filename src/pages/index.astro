@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Navbar } from '../components/Navbar';
+import Hero from '../components/Hero.astro';
+import StepCard from '../components/StepCard.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { TestimonialCarousel } from '../components/TestimonialCarousel';
+import { EligibilityPreview } from '../components/EligibilityPreview';
+import { ChatTeaser } from '../components/ChatTeaser';
+import { SocialProof } from '../components/SocialProof';
+import { FAQ } from '../components/FAQ';
+import BenefitCategories from '../components/BenefitCategories.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import DashboardPreview from '../components/DashboardPreview.astro';
+import Footer from '../components/Footer.astro';
+import { CTASection } from '../components/CTASection';
+
+const navLinks = [
+  { label: 'How it works', href: '#how-it-works' },
+  { label: 'Benefits', href: '#benefits' },
+  { label: 'Success Stories', href: '#testimonials' },
+  { label: 'FAQ', href: '#faq' },
+];
+
+const footerLinks = [
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms of Service', href: '#' },
+  { label: 'Contact Us', href: '#' },
+];
+
+const steps = [
+  {
+    number: 1,
+    title: 'Initial Assessment',
+    description: 'Provide basic information about your situation. Our system will analyze your data securely to find relevant aid programs.',
+  },
+  {
+    number: 2,
+    title: 'Document Upload',
+    description: 'Upload necessary documents directly through our secure portal. We’ll guide you on exactly what’s needed for each program.',
+  },
+  {
+    number: 3,
+    title: 'Submit & Track',
+    description: 'We’ll help you submit your applications and track their status in real-time. You’ll be notified of any updates immediately.',
+  },
+];
+
+const features = [
+  {
+    tag: 'Secure Upload',
+    title: 'Secure Document Vault',
+    description: 'State-of-the-art encryption for your sensitive documents. We ensure your data stays private and safe throughout the process.',
+  },
+  {
+    tag: 'Smart Check',
+    title: 'Eligibility Engine',
+    description: 'Our advanced algorithm compares your data with thousands of programs to identify every potential benefit you qualify for.',
+  },
+  {
+    tag: 'AI Assistant',
+    title: 'Personal AI Guide',
+    description: 'A 24/7 intelligent assistant to answer your questions, explain requirements, and guide you through form completions.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'I had no idea I was eligible for childcare assistance until I used GovAid. The process was so much easier than I expected!',
+    author: 'Sarah Jenkins',
+    role: 'Single Mother of Two',
+  },
+  {
+    quote: 'The AI Guide answered all my questions about the application requirements. I didn’t have to wait on hold for hours.',
+    author: 'David Martinez',
+    role: 'Retired Veteran',
+  },
+  {
+    quote: 'GovAid helped us find housing assistance when we were struggling. We are so grateful for this service.',
+    author: 'The Thompson Family',
+    role: 'Homeowners',
+  },
+];
+---
+
+<Layout title="GovAid - Find & Apply for Benefits in Minutes">
+  <Navbar links={navLinks}>
+    <a
+      slot="cta"
+      href="#"
+      class="inline-flex items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 transition-colors"
+    >
+      Check Eligibility
+    </a>
+  </Navbar>
+
+  <main>
+    <Hero
+      headline="Find & Apply for Benefits in Minutes"
+      subheadline="Navigate the complexities of government aid with confidence. Our AI-powered platform helps you identify eligible programs and streamlines your application process."
+    >
+      <div class="reveal reveal-delay-1">
+        <CTASection />
+      </div>
+      <div class="reveal reveal-delay-2">
+        <EligibilityPreview />
+      </div>
+      <div class="reveal reveal-delay-3">
+        <TrustBadges />
+      </div>
+    </Hero>
+    
+    <div class="reveal">
+      <DashboardPreview />
+    </div>
+
+    <SocialProof />
+
+    <section id="how-it-works" class="py-24 sm:py-32 bg-slate-50 dark:bg-slate-900/50 scroll-mt-16">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal">
+          <h2 class="text-base/7 font-bold text-blue-700 dark:text-blue-500 uppercase tracking-widest">How it works</h2>
+          <p class="mt-2 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Simple 3-step process</p>
+        </div>
+        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl class="grid max-w-xl grid-cols-1 gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {steps.map((step, i) => (
+              <div class={`reveal reveal-delay-${i}`}>
+                <StepCard {...step} />
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div id="benefits">
+      <BenefitCategories />
+    </div>
+
+    <section id="features" class="py-24 sm:py-32 scroll-mt-16 bg-white dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal">
+          <h2 class="text-base/7 font-bold text-blue-700 dark:text-blue-500 uppercase tracking-widest">Features</h2>
+          <p class="mt-2 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Everything you need to apply</p>
+        </div>
+        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {features.map((feature, i) => (
+              <div class={`reveal reveal-delay-${i}`}>
+                <FeatureCard {...feature} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="bg-slate-50 dark:bg-slate-900/50 py-24 sm:py-32 scroll-mt-16">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center mb-16 reveal">
+          <h2 class="text-base/7 font-bold text-blue-700 dark:text-blue-500 uppercase tracking-widest">Success Stories</h2>
+          <p class="mt-2 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Trusted by thousands of families</p>
+        </div>
+        <div class="reveal">
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </div>
+    </section>
+
+    <FAQ />
+  </main>
+
+  <Footer links={footerLinks} companyName="GovAid" />
+  <ChatTeaser />
+</Layout>
