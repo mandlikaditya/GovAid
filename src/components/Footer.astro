@@ -1,0 +1,59 @@
+---
+interface Props {
+  links: { label: string; href: string }[];
+  companyName: string;
+}
+
+const { links, companyName } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 py-16 sm:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <div class="reveal">
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Stay informed on new aid</h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-8">Join 50,000+ families receiving monthly updates on new eligibility programs.</p>
+        <form class="flex gap-2 max-w-md">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            class="flex-1 px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 dark:text-white"
+          />
+          <button class="px-6 py-3 bg-blue-700 text-white font-bold rounded-xl active:scale-95 transition-all">Join</button>
+        </form>
+      </div>
+      <div class="grid grid-cols-2 gap-8 reveal reveal-delay-1">
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Company</h4>
+          <ul class="space-y-4">
+            {links.map((link) => (
+              <li>
+                <a href={link.href} class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Support</h4>
+          <ul class="space-y-4 text-slate-500 dark:text-slate-400">
+            <li><a href="#" class="hover:text-blue-700 transition-colors">Documentation</a></li>
+            <li><a href="#" class="hover:text-blue-700 transition-colors">Legal Policy</a></li>
+            <li><a href="#" class="hover:text-blue-700 transition-colors">Contact Support</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-slate-100 dark:border-slate-800 reveal reveal-delay-2">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-500">{companyName}</span>
+      </div>
+      <div class="text-sm text-slate-500 dark:text-slate-500">
+        &copy; {currentYear} {companyName} Inc. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
